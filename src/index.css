@@ -4,14 +4,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #030014;
+  --color-primary: #f5f5f7;
 
-  --color-light-100: #cecefb;
-  --color-light-200: #a8b5db;
+  --color-light-100: #333333;
+  --color-light-200: #555555;
 
-  --color-gray-100: #9ca4ab;
+  --color-gray-100: #888888;
 
-  --color-dark-100: #0f0d23;
+  --color-dark-100: #e1e1e1;
 
   --font-dm-sans: DM Sans, sans-serif;
 
@@ -24,19 +24,21 @@
   body {
     font-family: "DM Sans", serif;
     font-optical-sizing: auto;
-    background: #030014;
+    background: #f5f5f7;
+    color: #000;
   }
 
   h1 {
-    @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
+    @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-black sm:text-[64px] sm:leading-[76px];
   }
 
   h2 {
-    @apply text-2xl font-bold text-white sm:text-3xl;
+    @apply text-2xl font-bold text-black sm:text-3xl;
   }
 
   main {
-    @apply min-h-screen relative bg-primary;
+    @apply min-h-screen relative;
+    background: #f5f5f7;
   }
 
   header {
@@ -78,7 +80,9 @@
   }
 
   .search {
-    @apply w-full bg-light-100/5 px-4 py-3 rounded-lg mt-10 max-w-3xl mx-auto;
+    @apply w-full rounded-4xl mt-10 max-w-3xl mx-auto px-4 py-3
+      bg-white/60 backdrop-blur-xl border border-gray-300 shadow-md
+      shadow-gray-400/20 transition duration-300 ease-in-out transform focus:scale-[1.03] active:scale-[1.02];
 
     & div {
       @apply relative flex items-center;
@@ -89,7 +93,7 @@
     }
 
     & input {
-      @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-light-200 outline-hidden;
+      @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-black placeholder-gray-500 outline-hidden;
     }
   }
 
@@ -97,19 +101,20 @@
     @apply space-y-9;
 
     & ul {
-      @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+      @apply grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4;
     }
   }
 
   .movie-card {
-    @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10;
+    @apply bg-white/20 backdrop-blur-3xl border border-white/30 rounded-2xl p-6
+      shadow-lg shadow-gray-400/20 transition duration-300 ease-in-out transform hover:scale-[1.02];
 
     & img {
       @apply rounded-lg h-auto w-full;
     }
 
     & h3 {
-      @apply text-white font-bold text-base line-clamp-1;
+      @apply text-black font-bold text-base line-clamp-1;
     }
 
     & .content {
@@ -125,31 +130,32 @@
     }
 
     & .rating p {
-      @apply font-bold text-base text-white;
+      @apply font-bold text-base text-black;
     }
 
     & .content span {
-      @apply text-sm text-gray-100;
+      @apply text-sm text-gray-600;
     }
 
     & .content .lang {
-      @apply capitalize text-gray-100 font-medium text-base;
+      @apply capitalize text-gray-700 font-medium text-base;
     }
 
     & .content .year {
-      @apply text-gray-100 font-medium text-base;
+      @apply text-gray-700 font-medium text-base;
     }
   }
 }
 
 @utility text-gradient {
-  @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-[#6e6e73] to-[#1d1d1f] bg-clip-text text-transparent;
 }
 
 @utility fancy-text {
-  -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
+  -webkit-text-stroke: 5px rgba(0, 0, 0, 0.05);
   font-size: 190px;
   font-family: "Bebas Neue", sans-serif;
+  color: #f5f5f7;
 }
 
 @utility hide-scrollbar {

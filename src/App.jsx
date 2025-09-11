@@ -1,5 +1,6 @@
 import Search from "./components/Search";
 import Spinner from "./components/Spinner";
+import MovieCard from "./components/MovieCard";
 import React, { useState, useEffect } from "react";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -35,6 +36,8 @@ const App = () => {
 
       // const data and set the data array
       const data = await response.json();
+
+      console.log(data);
       setMovieList(data.results);
 
       if (data.Response === "False") {
@@ -51,8 +54,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    fetchMovies(searchTerm);
+  }, [searchTerm]);
   return (
     <main>
       <div className="pattern" />
@@ -68,7 +71,7 @@ const App = () => {
         </header>
 
         <section className="all-movies">
-          <h2 className="pt-5">All Movies</h2>
+          <h2 className="pt-8">All Movies</h2>
 
           {isLoading ? (
             <Spinner />
@@ -77,9 +80,7 @@ const App = () => {
           ) : (
             <ul>
               {movieList.map((movie) => (
-                <p key={movie.id} className="text-white">
-                  {movie.title}
-                </p>
+                <MovieCard key={movie.id} movie={movie} />
               ))}
             </ul>
           )}
